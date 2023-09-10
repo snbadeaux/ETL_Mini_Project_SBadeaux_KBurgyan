@@ -1,0 +1,58 @@
+campaign
+--
+cf_id INT PK
+company_name VARCHAR(50)
+description VARCHAR(225)
+goal NUMERIC(10,2)
+pledged NUMERIC(10,2)
+outcome VARCHAR(50)
+backers_count INT
+country VARCHAR(50)
+currency VARCHAR(50)
+launched_date DATE
+end_date DATE
+
+
+category
+--
+category_id PK VARCHAR(50)
+category VARCHAR(50)
+
+category_campaign
+--
+category_campaign_id PK INT
+category_id FK >- category.category_id VARCHAR(50)
+cf_id INT FK >- campaign.cf_id
+
+
+
+contacts
+--
+contact_id PK INT
+first_name VARCHAR(50)
+last_name VARCHAR(50)
+email VARCHAR(50)
+
+subcategory
+--
+subcategory_id PK VARCHAR(50)
+subcategory VARCHAR(50)
+
+subcategory_campaign
+--
+subcategory_campaign_id PK INT
+subcategory_id FK >- subcategory.subcategory_id VARCHAR(50)
+cf_id INT FK >- campaign.cf_id
+
+contact_campaign
+--
+contacts_campaign_id PK INT
+contact_id FK >- contacts.contact_id VARCHAR(50)
+cf_id INT FK >- campaign.cf_id
+
+subcategory_category
+--
+subcategory_category_id PK INT
+category_id FK >- category.category_id VARCHAR(50)
+subcategory_id FK >- subcategory.subcategory_id VARCHAR(50)
+
